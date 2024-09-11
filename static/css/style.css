@@ -1,0 +1,68 @@
+/* style.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Task Boxes */
+.task-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.task-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.task-box:hover {
+    transform: translateY(-5px);
+}
+
+.task-box h2 {
+    margin-top: 0;
+}
+
+.task-box:nth-child(odd) {
+    background-color: #e7f3ff;
+}
+
+.task-box:nth-child(even) {
+    background-color: #ffefef;
+}
+
+/* Add Task Button */
+.add-task-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.add-task-btn:hover {
+    background-color: #218838;
+}

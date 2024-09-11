@@ -1,0 +1,48 @@
+<!-- add_task.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Add Task</title>
+    <style>
+        /* CSS styling as per the previous example */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Task Details</h1>
+
+        <!-- Task Form -->
+        <form method="POST" action="/save_task">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name">
+
+            <label for="task">Task Working On:</label>
+            <input type="text" id="task" name="task" placeholder="Task Working On">
+
+            <!-- Multi-select checkboxes for working days -->
+            <label>Work From Office Days:</label>
+            <div class="multi-select">
+                <label><input type="checkbox" name="wfo_days" value="Monday"> Monday</label>
+                <label><input type="checkbox" name="wfo_days" value="Tuesday"> Tuesday</label>
+                <label><input type="checkbox" name="wfo_days" value="Wednesday"> Wednesday</label>
+                <label><input type="checkbox" name="wfo_days" value="Thursday"> Thursday</label>
+                <label><input type="checkbox" name="wfo_days" value="Friday"> Friday</label>
+            </div>
+
+            <!-- Leave selection for the current week -->
+            <label>Leave Days for the Week:</label>
+            <div class="multi-select">
+                {% for day, date in week_dates %}
+                <label><input type="checkbox" name="leave_days" value="{{ day }} ({{ date }})"> {{ day }} ({{ date }})</label>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Save Task</button>
+        </form>
+    </div>
+</body>
+</html>
