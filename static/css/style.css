@@ -66,3 +66,18 @@ h1 {
 .add-task-btn:hover {
     background-color: #218838;
 }
+
+/* Edit Button */
+.edit-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}

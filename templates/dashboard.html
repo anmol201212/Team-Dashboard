@@ -1,3 +1,5 @@
+<!-- dashboard.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +10,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Team Task Dashboard</h1>
+        <h1>Team Dashboard</h1>
+
+        <!-- Link to add new task -->
+        <a href="/add_task" class="add-task-btn">Add Task</a>
 
         <!-- Display tasks in colorful boxes -->
-        <div class="tasks">
-            {% for task, color in zip(tasks, task_colors) %}
-            <div class="task-box" style="background-color: #{{ color }};">
-                <h2>{{ task[1] }}</h2> <!-- Assuming task[1] is the 'name' -->
-                <p><strong>Task:</strong> {{ task[2] or "NA" }}</p>
-                <p><strong>Work from Office Days:</strong> {{ task[3] or "NA" }}</p>
-                <p><strong>Leave Days:</strong> {{ task[4] or "NA" }}</p>
-
+        <div class="task-list">
+            {% for task in tasks %}
+            <div class="task-box">
+                <h2>{{ task[1] }}</h2> <!-- Name -->
+                <p><strong>Task:</strong> {{ task[2] or 'NA' }}</p>
+                <p><strong>Work from Office Days:</strong> {{ task[3] or 'NA' }}</p>
+                <p><strong>Upcoming Leave:</strong> {{ task[4] or 'NA' }}</p>
                 <!-- Edit Button -->
-                <a href="{{ url_for('edit_task', task_id=task[0]) }}" class="btn-edit">Edit</a>
+                <a href="/edit_task/{{ task[0] }}" class="edit-btn">Edit</a>
             </div>
             {% endfor %}
         </div>

@@ -1,26 +1,23 @@
-<!-- edit_task.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/task.css') }}">
     <title>Edit Task</title>
 </head>
 <body>
     <div class="container">
-        <h1>Edit Task Details</h1>
+        <h1>Edit Task</h1>
 
-        <!-- Edit Task Form -->
-        <form method="POST" action="{{ url_for('edit_task', task_id=task[0]) }}">
+        <form method="POST" action="/update_task/{{ task[0] }}">
             <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" value="{{ task[1] }}">
+            <input type="text" id="name" name="name" value="{{ task[1] or 'NA' }}">
 
             <label for="task">Task Working On:</label>
-            <input type="text" id="task" name="task" value="{{ task[2] }}">
+            <input type="text" id="task" name="task" value="{{ task[2] or 'NA' }}">
 
-            <!-- Multi-select checkboxes for working days -->
+            <!-- Multi-select checkboxes for work from office days -->
             <label>Work From Office Days:</label>
             <div class="multi-select">
                 <label><input type="checkbox" name="wfo_days" value="Monday" {% if 'Monday' in task[3] %}checked{% endif %}> Monday</label>
@@ -30,13 +27,9 @@
                 <label><input type="checkbox" name="wfo_days" value="Friday" {% if 'Friday' in task[3] %}checked{% endif %}> Friday</label>
             </div>
 
-            <!-- Leave selection for the current week -->
-            <label>Leave Days for the Week:</label>
-            <div class="multi-select">
-                {% for day, date in week_dates %}
-                <label><input type="checkbox" name="leave_days" value="{{ day }} ({{ date }})" {% if day in task[4] %}checked{% endif %}> {{ day }} ({{ date }})</label>
-                {% endfor %}
-            </div>
+            <!-- Upcoming leave field -->
+            <label for="upcoming_leave">Upcoming Leave Date:</label>
+            <input type="date" id="upcoming_leave" name="upcoming_leave" value="{{ task[4] or '' }}">
 
             <button type="submit">Update Task</button>
         </form>
